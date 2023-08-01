@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <section>
+    <span>Afficher</span>
+    <input
+      type="number"
+      class="form-control items-per-page"
+      [formControl]="itemsPerPageFormControl"
+      [class.is-invalid]="itemsPerPageFormControl.invalid">
+  </section>
+
+  <section>
+    <span>{{ currentPage }} / {{ computeNumberOfPage() }}</span>
+    <button
+      [disabled]="currentPage == computeNumberOfPage()"
+      class="btn btn-light pagin-action"
+      (click)="loadNext.emit()">
+      Voir plus
+      <fa-icon [icon]="['fas', 'arrow-down']"></fa-icon>
+    </button>
+  </section>
+
+  <section>
+    <button
+      [disabled]="currentPage == 1"
+      class="btn btn-light pagin-action"
+      (click)="loadPrev.emit()">
+      Retour en haut
+      <fa-icon [icon]="['fas', 'arrow-up']"></fa-icon>
+    </button>
+  </section>
+</div>

@@ -1,0 +1,12 @@
+@import './../../../../app_color.scss';
+
+.main {
+  background-color: #FAFAFBff;
+  padding: 20px 15px;
+  overflow: hidden;
+  .content {
+    margin-top: 25px;
+    overflow: hidden;
+    // background-color: red;
+  }
+}

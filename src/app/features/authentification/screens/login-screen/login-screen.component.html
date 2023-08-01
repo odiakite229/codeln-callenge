@@ -1,0 +1,70 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="block-info">
+  <span class="block-name">Connexion</span>
+  <div class="block-content">
+    <form [formGroup]="form" class="mb-4">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+        <input type="text"
+            formControlName="email"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('email')?.touched && form.get('email')?.invalid"
+            [class.is-valid]="form.get('email')?.touched && form.get('email')?.valid"/>
+        <small
+          *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+        <small
+          *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"
+          class="field-errors">
+          Ce champ doit être une adresse mail
+        </small>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input
+            [type]="hiddenPassword ? 'password' : 'text'"
+            formControlName="password"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('password')?.touched && form.get('password')?.invalid"
+            [class.is-valid]="form.get('password')?.touched && form.get('password')?.valid"
+            autocomplete="on"
+
+            aria-describedby="show-password">
+          <button
+            class="btn btn-lg btn-outline-secondary"
+            type="button"
+            id="show-password"
+            (click)="hiddenPassword = !hiddenPassword">
+            <fa-icon [icon]="['fas', hiddenPassword ? 'eye' : 'eye-slash']"></fa-icon>
+          </button>
+        </div>
+        <a routerLink="/auth/login" class="forgot-password">Mot de passe oublié?</a>
+        <small
+          *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+        <small
+          *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']"
+          class="field-errors">
+          Ce doit doit être d'au-moins 6 caractères
+        </small>
+      </div>
+
+      <button class="btn btn-lg w-100 btn-darkorange" (click)="form.valid ? login() : form.markAllAsTouched()">
+        <fa-icon *ngIf="isLoading" [icon]="['fas', 'spinner']" [spin]="true"></fa-icon>
+        Connexion
+      </button>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+      <span>Vous n'avez pas de compte?</span>
+      <a routerLink="/auth/signup">Inscription</a>
+    </div>
+  </div>
+</div>

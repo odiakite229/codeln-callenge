@@ -1,0 +1,24 @@
+@import './../../../../app_color.scss';
+
+.input-group {
+  width: 35%;
+  align-self: stretch;
+
+  .input-group-text {
+    background-color: $orange50 !important;
+    border-radius: 100px;
+    border: none;
+  }
+
+  .form-control{
+    border-radius: 100px;
+    background-color: $orange50 !important;
+    border: none;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: $orange;
+}

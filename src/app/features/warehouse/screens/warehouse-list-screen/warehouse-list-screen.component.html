@@ -1,0 +1,68 @@
+<app-two-column-layout
+  [navigations]="['Tableau de bord', 'Administration']">
+  <div class="actions">
+    <button class="btn btn-darkorange btn-lg actions" (click)="createWarehouse()">Créer un entrepot</button>
+  </div>
+  <div
+    fxLayout="column"
+    fxFill
+    class="content">
+    <app-list-header
+      title="Historique des entrepôts"
+      (search)="search($event)"></app-list-header>
+    <div fxFlex="auto" class="warehouses">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Superficie (m<sup>2</sup>)</th>
+            <th scope="col">Placer</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngIf="isLoading; else showData">
+            <td colspan="4" class="loading">
+              <span>Chargement</span>
+            </td>
+          </tr>
+          <ng-template #showData>
+            <tr *ngIf="warehousePaginated!.results.length == 0; else showList">
+              <td colspan="4" class="empty-list">
+                <span *ngIf="!searchText" >Aucun entrepôt à afficher</span>
+                <span *ngIf="searchText">Aucun entrepôt ne correspont à votre recherche</span>
+              </td>
+            </tr>
+            <ng-template #showList>
+              <tr *ngFor="let warehouse of warehousePaginated!.results">
+                <th scope="row">{{ warehouse.libelle }}</th>
+                <td>{{ warehouse.areas }}</td>
+                <td>{{ warehouse.placer }}</td>
+                <td class="item-actions">
+                  <button class="btn btn-darkorange" (click)="updateWarehouse(warehouse)">
+                    <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                  </button>
+                  <button class="btn btn-darkorange" (click)="confirmDeleteWarehouse(warehouse)">
+                    <fa-icon
+                      [icon]="['fas', deletingIds.has(warehouse.uid) ? 'spinner' : 'trash']"
+                      [spin]="deletingIds.has(warehouse.uid)"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </ng-template>
+
+        </tbody>
+      </table>
+    </div>
+    <app-pagination-controls
+      *ngIf="warehousePaginated"
+      [totalCount]="warehousePaginated.totalCount"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="currentPage"
+      (itemsPerPageChanged)="loadWarehouse(currentPage, $event, searchText);"
+      (loadPrev)="loadWarehouse(currentPage - 1, itemsPerPage, searchText)"
+      (loadNext)="loadWarehouse(currentPage + 1, itemsPerPage, searchText)"></app-pagination-controls>
+  </div>
+</app-two-column-layout>

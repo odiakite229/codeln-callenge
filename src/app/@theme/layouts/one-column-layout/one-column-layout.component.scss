@@ -1,0 +1,14 @@
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-container {
+  overflow: hidden;
+  .content {
+    background-color: #FFFFFFff;
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+}

@@ -1,0 +1,21 @@
+<div
+  fxFill
+  fxLayout="column"
+  fxLayoutGap="15px">
+  <div class="sub-header">
+    <app-breadcrumb [navigations]="navigations"/>
+    <div class="actions">
+      <ng-content select=".actions" ></ng-content>
+    </div>
+  </div>
+  <div
+    fxFlex="auto"
+    fxLayout="row"
+    fxLayoutGap="18px"
+    class="content-container">
+    <app-layout-sidebar fxFlex="20%"/>
+    <div fxFlex="auto" class="content">
+      <ng-content select=".content"></ng-content>
+    </div>
+  </div>
+</div>

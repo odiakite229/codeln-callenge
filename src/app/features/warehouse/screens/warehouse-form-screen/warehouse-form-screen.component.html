@@ -1,0 +1,113 @@
+<app-one-column-layout
+  [navigations]="['Tableau de bord', 'Administration', 'Opérations', 'Créer un entrepot']">
+  <div class="actions">
+    <button class="btn btn-lightorange btn-lg actions" (click)="goBack()">
+      <fa-icon [icon]="['fas', 'chevron-left']"></fa-icon>
+      Précédent
+    </button>
+  </div>
+  <div fxLayout="column" fxFill class="content">
+    <span class="title" *ngIf="warehouse === undefined">Créer un entrepot</span>
+    <span class="title" *ngIf="warehouse !== undefined">Modification d'entrepot "{{ warehouse.libelle }}"</span>
+    <form
+      [formGroup]="form"
+      fxLayout="column"
+      fxFlex="auto"
+      fxLayoutAlign="center space-around">
+      <div>
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="libelle" class="form-label">Libellé<span class="text-danger">*</span></label>
+            <input
+              type="text"
+              formControlName="libelle"
+              class="form-control form-control-lg"
+              [class.is-invalid]="form.get('libelle')?.touched && form.get('libelle')?.invalid"
+              [class.is-valid]="form.get('libelle')?.touched && form.get('libelle')?.valid"/>
+            <small
+              *ngIf="form.get('libelle')?.touched && form.get('libelle')?.errors?.['required']"
+              class="field-errors">
+              Ce champ est est obligatoire
+            </small>
+          </div>
+
+          <div class="col-md-6">
+            <label for="lon" class="form-label">Longitude<span class="text-danger">*</span></label>
+            <input
+              type="number"
+              formControlName="lon"
+              class="form-control form-control-lg"
+              [class.is-invalid]="form.get('lon')?.touched && form.get('lon')?.invalid"
+              [class.is-valid]="form.get('lon')?.touched && form.get('lon')?.valid"/>
+            <small
+              *ngIf="form.get('lon')?.touched && form.get('lon')?.errors?.['required']"
+              class="field-errors">
+              Ce champ est est obligatoire
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="areas" class="form-label">Superficie<span class="text-danger">*</span></label>
+            <input
+              type="number"
+              formControlName="areas"
+              class="form-control form-control-lg"
+              [class.is-invalid]="form.get('areas')?.touched && form.get('areas')?.invalid"
+              [class.is-valid]="form.get('areas')?.touched && form.get('areas')?.valid"/>
+            <small
+              *ngIf="form.get('areas')?.touched && form.get('areas')?.errors?.['required']"
+              class="field-errors">
+              Ce champ est est obligatoire
+            </small>
+          </div>
+
+          <div class="col-md-6">
+            <label for="lat" class="form-label">Latitude<span class="text-danger">*</span></label>
+            <input
+              type="number"
+              formControlName="lat"
+              class="form-control form-control-lg"
+              [class.is-invalid]="form.get('lat')?.touched && form.get('lat')?.invalid"
+              [class.is-valid]="form.get('lat')?.touched && form.get('lat')?.valid"/>
+            <small
+              *ngIf="form.get('lat')?.touched && form.get('lat')?.errors?.['required']"
+              class="field-errors">
+              Ce champ est est obligatoire
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <label for="placer" class="form-label">Placer<span class="text-danger">*</span></label>
+            <input
+              type="string"
+              formControlName="placer"
+              class="form-control form-control-lg"
+              [class.is-invalid]="form.get('placer')?.touched && form.get('placer')?.invalid"
+              [class.is-valid]="form.get('placer')?.touched && form.get('placer')?.valid"/>
+            <small
+              *ngIf="form.get('placer')?.touched && form.get('placer')?.errors?.['required']"
+              class="field-errors">
+              Ce champ est est obligatoire
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button class="btn btn-lightorange btn-lg actions" (click)="cancel()">
+          Annuler
+        </button>
+        <button
+          class="btn btn-darkorange btn-lg actions"
+          (click)="form.valid ? save() : form.markAllAsTouched()">
+          <fa-icon *ngIf="isLoading" [icon]="['fas', 'spinner']" [spin]="true"></fa-icon>
+           {{ warehouse ? 'Modifier' : 'Enregistrer' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</app-one-column-layout>

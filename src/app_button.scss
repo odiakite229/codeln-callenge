@@ -1,0 +1,42 @@
+// @import './../app_color.scss';
+
+//Marge de 3px sur tout les boutons
+.btn {
+  margin: 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+    box-shadow: none;
+}
+
+.btn-darkorange {
+  background-color: $orange;
+  border-color: $orange;
+  color: #ffffff;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $orange400;
+    border-color: $orange400;
+    color: #ffffff;
+  }
+}
+
+.btn-lightorange {
+  background-color: $orange50;
+  border-color: $orange50;
+  color: $orange;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $orange50;
+    border-color: $orange50;
+    color: $orange;
+  }
+}

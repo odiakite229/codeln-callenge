@@ -1,1 +1,211 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import './app_color.scss';
+@import './app_button.scss';
+
+
+.block-info {
+  margin-bottom: 30px;
+  .block-name {
+    color: $orange;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+}
+
+// link
+a {
+  color: $orange;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+//Labels des formulaires
+.form-label {
+  font-size: 17px;
+  color: #5A6978;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  .btn {
+    margin: 0;
+    --bs-btn-border-color: #dee2e6
+  }
+}
+
+.field-errors {
+  display: block;
+  width: 100%;
+  color: red;
+}
+
+
+.swal2-title {
+  color: $orange;
+  font-size: 1.5em !important;
+}
+
+.swal2-confirm, .swal2-cancel {
+  display: flex !important;
+}
+
+.swal2-cancel {
+  @extend .btn-lightorange;
+}
+
+.swal2-confirm {
+  @extend .btn-darkorange;
+}
+
+
+/************ Sweetalert2 Toastr ************/
+body.swal2-toast-shown .swal2-container {
+  width: unset !important;
+  min-width: 360px !important;
+  max-width: 800px !important;
+}
+
+.swal2-confirm, .swal2-cancel {
+  display: flex !important;
+}
+
+.colored-toast > .swal2-icon.swal2-success.swal2-icon-show,
+.colored-toast > .swal2-icon.swal2-error.swal2-icon-show,
+.colored-toast > .swal2-icon.swal2-warning.swal2-icon-show,
+.colored-toast > .swal2-icon.swal2-info.swal2-icon-show {
+  display: none !important;
+}
+
+.colored-toast.swal2-icon-success {
+  background-color: #26BC6A !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+}
+.colored-toast.swal2-icon-warning {
+  background-color: #f8bb86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #3fc3ee !important;
+}
+
+.colored-toast.swal2-icon-question {
+  background-color: #87adbd !important;
+}
+
+.colored-toast .swal2-title {
+  color: white;
+  font-size: 22px !important;
+}
+
+.colored-toast .swal2-close {
+  color: white;
+}
+
+.colored-toast .swal2-html-container {
+  color: white;
+}
+
+
+/*** Dropdown CSS ******************************************************/
+
+.dropdown-wrapper {
+  cursor: pointer;
+  display: inline-block;
+}
+
+/**Remove dropdown arrow**/
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  height: 45px;
+}
+
+.dropdown-menu-right {
+  margin-top: 15px;
+  margin-right: -17px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropdown-menu:before {
+  border-bottom: 11px solid lightgray;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 12px;
+  top: -12px;
+}
+
+.dropdown-menu:after {
+  border-bottom: 11px solid lightgray;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 12px;
+  top: -11px;
+}
+
+
+// breakcrumb
+.breadcrumb {
+  margin-bottom: 0px !important;
+}
+
+
+// table
+.table-striped {
+  thead {
+    position: sticky;
+    top: 0;
+    tr, th {
+      background-color: $orange100;
+      font-weight: 500;
+      text-align: center;
+      vertical-align: middle; 
+    }
+  }
+  tbody {
+    tr {
+      th, td {
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        &.empty-list, &.loading {
+          height: 100px;
+        }
+      }
+      &:nth-child(even) {
+        th, td {
+          background-color: $orange50;
+        }
+      }
+      &:nth-child(odd) {
+        th, td {
+          --bs-table-bg-type: #fff;
+        }
+      }
+    }
+  }
+}

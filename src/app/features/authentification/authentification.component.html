@@ -1,0 +1,40 @@
+<div fxLayout="row" fxFill class="content">
+  <div
+    fxFlex="60%"
+    class="sliders">
+    <ngb-carousel  *ngIf="carouselItems" [showNavigationArrows]="false">
+      <ng-template ngbSlide *ngFor="let item of carouselItems">
+        <div class="picsum-img-wrapper">
+          <img [src]="item.image" alt="Random slide" />
+        </div>
+        <div class="carousel-caption">
+          <h3 class="title">{{ item.title }}</h3>
+          <p class="description">{{ item.description }}</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div
+    fxFlex="auto"
+    fxLayout="column"
+    fxLayoutAlign="center"
+    class="form">
+
+    <span fxFlexAlign="center" class="app-logo">RICVA</span>
+
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="block-info">
+      <span class="block-name">Spéculations</span>
+      <app-product-list class="block-content"/>
+    </div>
+
+    <div fxFlexAlign="center" style="width: 400px">
+    <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>
+

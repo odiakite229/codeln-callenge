@@ -1,0 +1,50 @@
+#flag-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .flag {
+    font-size: 28px;
+    margin-right: 6px;
+  }
+  // fa-icon {
+
+  // }
+}
+
+#profil-dropdown {
+  display: flex;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  background-color: #fff;
+  padding: 6px 8px;
+  border-radius: 10px;
+
+  .icon-profile {
+    font-size: 24px;
+  }
+
+  .user-name {
+    font-weight: 500;
+  }
+}
+
+.btn-notif {
+  background-color: #1574BEff;
+
+  background-color: #1574BEff;
+  border-color: #1574BEff;
+  color: #ffffff;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #2eb4f8;
+    border-color: #2eb4f8;
+    color: #ffffff;
+  }
+}

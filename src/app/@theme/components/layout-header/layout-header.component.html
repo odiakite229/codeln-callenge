@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <app-product-list/>
+  <div
+    fxLayout="row"
+    fxLayoutGap="30px"
+    fxLayoutAlign="start center"
+    class="right-header">
+    <button class="btn btn-notif">
+      <fa-icon [icon]="['fas', 'bell']"></fa-icon> 12
+    </button>
+
+    <div ngbDropdown  class="dropdown-wrapper" placement="bottom-right">
+      <span ngbDropdownToggle id="flag-dropdown">
+        <span class="flag">{{ getFlagEmoji('FR') }}</span>
+        <fa-icon class="icon" [icon]="['fas', 'chevron-down']"></fa-icon>
+      </span>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="flag-dropdown">
+        <span ngbDropdownItem>{{ getFlagEmoji('FR') }} Français</span>
+        <span ngbDropdownItem>{{ getFlagEmoji('US') }} Anglais</span>
+        <span ngbDropdownItem>{{ getFlagEmoji('RU') }} Russe</span>
+      </div>
+    </div>
+
+    <div ngbDropdown class="dropdown-wrapper" placement="bottom-left">
+      <span id="profil-dropdown" ngbDropdownToggle>
+        <fa-icon [icon]="['far', 'circle-user']" class="icon-profile"></fa-icon>
+        <span class="user-name">{{ displayUserName }}</span>
+        <fa-icon [icon]="['fas', 'chevron-down']"></fa-icon>
+      </span>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="profil-dropdown">
+        <span ngbDropdownItem>Mon profil</span>
+        <span ngbDropdownItem (click)="signOut()">Déconnexion</span>
+      </div>
+    </div>
+  </div>
+</div>

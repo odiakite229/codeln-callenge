@@ -1,0 +1,93 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="block-info">
+  <span class="block-name">Inscription</span>
+  <div class="block-content">
+    <form [formGroup]="form" class="mb-4 form-inline">
+
+      <div class="mb-3">
+        <label for="firstname" class="form-label">Nom <span class="text-danger">*</span></label>
+        <input type="text"
+            formControlName="firstname"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('firstname')?.touched && form.get('firstname')?.invalid"
+            [class.is-valid]="form.get('firstname')?.touched && form.get('firstname')?.valid"/>
+        <small
+          *ngIf="form.get('firstname')?.touched && form.get('firstname')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Prénoms <span class="text-danger">*</span></label>
+        <input type="text"
+            formControlName="lastname"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('lastname')?.touched && form.get('lastname')?.invalid"
+            [class.is-valid]="form.get('lastname')?.touched && form.get('lastname')?.valid"/>
+        <small
+          *ngIf="form.get('lastname')?.touched && form.get('lastname')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+        <input type="text"
+            formControlName="email"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('email')?.touched && form.get('email')?.invalid"
+            [class.is-valid]="form.get('email')?.touched && form.get('email')?.valid"/>
+        <small
+          *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input
+            [type]="hiddenPassword ? 'password' : 'text'"
+            formControlName="password"
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.get('password')?.touched && form.get('password')?.invalid"
+            [class.is-valid]="form.get('password')?.touched && form.get('password')?.valid"
+            autocomplete="on"
+            aria-describedby="show-password">
+          <button
+            class="btn btn-lg btn-outline-secondary"
+            type="button"
+            id="show-password"
+            (click)="hiddenPassword = !hiddenPassword">
+            <fa-icon [icon]="['fas', hiddenPassword ? 'eye' : 'eye-slash']"></fa-icon>
+          </button>
+        </div>
+        <small
+          *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"
+          class="field-errors">
+          Ce champ est est obligatoire
+        </small>
+        <small
+          *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']"
+          class="field-errors">
+          Le mot de passe doit être d'au-moins 6 caractères
+        </small>
+      </div>
+
+      <button class="btn btn-lg w-100 btn-darkorange" (click)="form.valid ? signup() : form.markAllAsTouched()">
+        <fa-icon *ngIf="isLoading" [icon]="['fas', 'spinner']" [spin]="true"></fa-icon>
+        Inscription
+      </button>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+      <span>Vous n'avez déjà un compte?</span>
+      <a routerLink="/auth/login">Connexion</a>
+    </div>
+  </div>
+</div>

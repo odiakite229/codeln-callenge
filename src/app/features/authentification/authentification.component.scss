@@ -1,0 +1,91 @@
+@import "./../../../app_color.scss";
+
+:host {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  .sliders {
+    // background-color: red;
+    overflow: hidden;
+  }
+
+  .form {
+    overflow-y: auto;
+  }
+}
+
+.app-logo {
+  color: $blue;
+  font-size: 38px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+:host ::ng-deep ngb-carousel {
+  // height: 100% !important;
+
+  .carousel-inner {
+    .carousel-item {
+      .picsum-img-wrapper {
+        img {
+          height: 100vh;
+          width: 100%;
+        }
+      }
+
+      .carousel-caption {
+        position: absolute;
+        bottom: unset;
+        padding-top: unset;
+        padding-bottom: unset;
+        color: #fff;
+        text-align: start;
+        top: 40%;
+        // margin-left: 15%;
+
+        .title {
+          font-size: 60px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+
+        .description {
+          font-size: 26px;
+          font-weight: 400;
+          color: #fff;
+        }
+      }
+
+
+    }
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 4rem;
+    margin-left: 15%;
+
+    [data-bs-target] {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-right: 3px;
+      margin-left: 3px;
+      opacity: 1;
+      &.active {
+        width: 70px;
+        border-radius: 15px;
+        padding: unset;
+        border-bottom: unset;
+        border-top: unset;
+      }
+    }
+  }
+}

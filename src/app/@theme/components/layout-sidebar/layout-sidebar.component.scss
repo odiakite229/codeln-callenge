@@ -1,0 +1,25 @@
+@import './../../../../app_color.scss';
+
+:host {
+  height: 100%;
+}
+
+.title-sidebar {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  cursor: pointer;
+  padding: 0px 15px;
+  width: 100%;
+  border-radius: 10px;
+
+  &.active {
+    background-color: #F1E4DCff;
+    pointer-events: none;
+    .label-sidebar, .total-count {
+      color: $orange;
+    }
+  }
+}

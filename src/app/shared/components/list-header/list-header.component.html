@@ -1,0 +1,17 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center">
+  <span class="title">{{ title }}</span>
+  <div
+    fxFlex="15%"
+    class="input-group">
+    <span class="input-group-text">
+      <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+    </span>
+    <input
+      type="text"
+      [formControl]="searchControl"
+      class="form-control form-control-lg"
+      placeholder="Recherche">
+  </div>
+</div>
