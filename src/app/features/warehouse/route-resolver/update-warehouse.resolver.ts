@@ -33,12 +33,12 @@ export class UpdateWarehouseResolver {
     return from(this.warehouseService.getByUid(route.paramMap.get('id')!)).pipe(
       switchMap(response => {
         if(!response) {
-          return this.handleError('L\'entrepot à modifier n\'existe pas');
+          return this.handleError('L\'entrepôt à modifier n\'existe pas');
         }
         return of(response)
       }),
       catchError(() => {
-        return this.handleError('Nous rencontrons une erreur lors de la récuperation de l\'entrepot à modifier.')
+        return this.handleError('Nous rencontrons une erreur lors de la récuperation de l\'entrepôt à modifier.')
       })
     )
   }

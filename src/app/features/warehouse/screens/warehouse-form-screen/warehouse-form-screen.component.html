@@ -1,5 +1,5 @@
 <app-one-column-layout
-  [navigations]="['Tableau de bord', 'Administration', 'Opérations', 'Créer un entrepot']">
+  [navigations]="['Tableau de bord', 'Administration', 'Opérations', 'Créer un entrepôt']">
   <div class="actions">
     <button class="btn btn-lightorange btn-lg actions" (click)="goBack()">
       <fa-icon [icon]="['fas', 'chevron-left']"></fa-icon>
@@ -7,8 +7,8 @@
     </button>
   </div>
   <div fxLayout="column" fxFill class="content">
-    <span class="title" *ngIf="warehouse === undefined">Créer un entrepot</span>
-    <span class="title" *ngIf="warehouse !== undefined">Modification d'entrepot "{{ warehouse.libelle }}"</span>
+    <span class="title" *ngIf="warehouse === undefined">Créer un entrepôt</span>
+    <span class="title" *ngIf="warehouse !== undefined">Modification d'entrepôt "{{ warehouse.libelle }}"</span>
     <form
       [formGroup]="form"
       fxLayout="column"

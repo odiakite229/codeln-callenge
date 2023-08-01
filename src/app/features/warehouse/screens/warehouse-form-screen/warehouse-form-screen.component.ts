@@ -100,7 +100,7 @@ export class WarehouseFormScreenComponent implements OnInit {
           this.warehouseServ.create({
             ...this.getFormData()
           }).then(warehouse => {
-            this.info.success(`Entrepot '${warehouse.libelle}' a été crée avec succès`);
+            this.info.success(`Entrepôt '${warehouse.libelle}' a été crée avec succès`);
             this.router.navigate(['warehouse']);
           }).catch(err => {
             console.log(err);
@@ -110,7 +110,7 @@ export class WarehouseFormScreenComponent implements OnInit {
       });
     } else {
       this.showConfirm(
-        `Voulez-vous continuer la modification de l'entrepot '${this.warehouse.libelle}'?`
+        `Voulez-vous continuer la modification de l'entrepôt '${this.warehouse.libelle}'?`
       ).then(result => {
         this.isLoading = true;
         if(result.isConfirmed) {
@@ -120,7 +120,7 @@ export class WarehouseFormScreenComponent implements OnInit {
             doc: this.warehouse!.doc,
             ...formData
           }).then(() => {
-            this.info.success(`Entrepot '${formData.libelle}' a été modifié avec succès`);
+            this.info.success(`Entrepôt '${formData.libelle}' a été modifié avec succès`);
             this.router.navigate(['warehouse']);
           }).catch(err => {
             console.log(err);
