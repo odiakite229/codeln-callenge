@@ -14,7 +14,7 @@ import { InfoService } from 'src/app/services/info.service';
 })
 export class WarehouseListScreenComponent implements OnInit {
 
-  itemsPerPage: number = 5;
+  itemsPerPage: number = 20;
   currentPage: number = 1;
   warehousePaginated!: DataPaginated<WarehouseModel>;
   isLoading: boolean = false;
