@@ -35,11 +35,29 @@ export class WarehouseFormScreenComponent implements OnInit {
 
   initForm() {
     this.form = this.fb.group({
-      libelle: new FormControl<string>(this.warehouse ? this.warehouse!.libelle : '', [Validators.required]),
-      areas: new FormControl<number>(this.warehouse ? this.warehouse!.areas : 0, [Validators.required]),
-      lon: new FormControl<number>(this.warehouse ? this.warehouse!.lon : 0, [Validators.required]),
-      lat: new FormControl<number>(this.warehouse ? this.warehouse!.lat : 0, [Validators.required]),
-      placer: new FormControl<string>(this.warehouse ? this.warehouse!.placer : '', [Validators.required]),
+      libelle: new FormControl<string>(
+        this.warehouse ? this.warehouse!.libelle : '',
+        [Validators.required]
+      ),
+      areas: new FormControl<number>(
+        this.warehouse ? this.warehouse!.areas : 0,
+        [Validators.required]
+      ),
+      lon: new FormControl<number>(this.warehouse ? this.warehouse!.lon : 0, [
+        Validators.required,
+        Validators.min(-180),
+        Validators.max(180)]
+      ),
+      lat: new FormControl<number>(
+        this.warehouse ? this.warehouse!.lat : 0, [
+        Validators.required,
+        Validators.min(-90),
+        Validators.max(90)]
+      ),
+      placer: new FormControl<string>(
+        this.warehouse ? this.warehouse!.placer : '',
+        [Validators.required]
+      ),
     });
   }
 

@@ -44,6 +44,11 @@
               class="field-errors">
               Ce champ est est obligatoire
             </small>
+            <small
+              *ngIf="form.get('lon')?.touched && (form.get('lon')?.errors?.['min'] || form.get('lon')?.errors?.['max'])"
+              class="field-errors">
+              La longitude doit être comprise entre -180 et 180
+            </small>
           </div>
         </div>
 
@@ -75,6 +80,11 @@
               *ngIf="form.get('lat')?.touched && form.get('lat')?.errors?.['required']"
               class="field-errors">
               Ce champ est est obligatoire
+            </small>
+            <small
+              *ngIf="form.get('lat')?.touched && (form.get('lat')?.errors?.['min'] || form.get('lat')?.errors?.['max'])"
+              class="field-errors">
+              La longitude doit être comprise entre -90 et 90
             </small>
           </div>
         </div>
